@@ -78,5 +78,111 @@ document.getElementById('profileName').value=p.name||'';document.getElementById(
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 render();
 </script>
+/* LEICHTER LEBEN – experimentelle Fotoerkennung */
+(function () {
+  const photo = document.getElementById('foodPhoto');
+  if (!photo || document.getElementById('foodAIButton')) return;
+
+  const button = document.createElement('button');
+  button.id = 'foodAIButton';
+  button.textContent = '🍽️ Essen automatisch erkennen';
+  button.style.marginTop = '12px';
+  photo.insertAdjacentElement('afterend', button);
+
+  const status = document.createElement('p');
+  status.className = 'note';
+  button.insertAdjacentElement('afterend', status);
+
+  let classifierPromise;
+
+  const foods = [
+    ['pizza', 'Pizza', 266, 11, 33, 10],
+    ['hamburger', 'Hamburger', 295, 17, 30, 12],
+    ['french fries', 'Pommes frites', 312, 3, 41, 15],
+    ['grilled chicken', 'Hähnchen', 190, 29, 0, 8],
+    ['cooked rice', 'Gekochter Reis', 130, 3, 28, 0],
+    ['cooked pasta', 'Nudeln', 158, 6, 31, 1],
+    ['salad', 'Salat', 35, 2, 6, 1],
+    ['soup', 'Suppe', 60, 3, 8, 2],
+    ['steak', 'Steak', 250, 26, 0, 16],
+    ['fried fish', 'Fisch', 200, 22, 5, 10],
+    ['pancakes', 'Pfannkuchen', 227, 6, 28, 10],
+    ['sandwich', 'Sandwich', 250, 10, 30, 9],
+    ['sushi', 'Sushi', 150, 6, 30, 2],
+    ['roasted potatoes', 'Kartoffeln', 150, 3, 27, 4],
+    ['vegetable curry', 'Gemüsecurry', 120, 3, 15, 5],
+    ['cake', 'Kuchen', 350, 5, 50, 15],
+    ['ice cream', 'Eis', 210, 4, 24, 11],
+    ['omelette', 'Omelett', 154, 11, 1, 11]
+  ];
+
+  button.addEventListener('click', async function () {
+    const file = photo.files && photo.files[0];
+    if (!file) {
+      status.textContent = 'Bitte zuerst ein Foto aufnehmen.';
+      return;
+    }
+
+    button.disabled = true;
+    try {
+      status.textContent = 'Modell wird geladen. Beim ersten Mal kann das dauern …';
+
+      if (!classifierPromise) {
+        classifierPromise = import(
+          'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2'
+        ).then(m => m.pipeline(
+          'zero-shot-image-classification',
+          'Xenova/clip-vit-base-patch32'
+        ));
+      }
+
+      const classifier = await classifierPromise;
+      const imageURL = URL.createObjectURL(file);
+
+      let results;
+      try {
+        results = await classifier(
+          imageURL,
+          foods.map(f => 'a photo of ' + f[0]),
+          { topk: 1 }
+        );
+      } finally {
+        URL.revokeObjectURL(imageURL);
+      }
+
+      if (!results || !results.length) {
+        throw new Error('Keine Erkennung möglich.');
+      }
+
+      const label = results[0].label.replace(/^a photo of /, '');
+      const food = foods.find(f => f[0] === label);
+
+      if (!food) throw new Error('Lebensmittel nicht zugeordnet.');
+
+      const grams = 350;
+      document.getElementById('foodName').value = food[1];
+      document.getElementById('foodGrams').value = grams;
+      document.getElementById('foodCalories').value =
+        Math.round(food[2] * grams / 100);
+      document.getElementById('foodProtein').value =
+        Math.round(food[3] * grams / 100);
+      document.getElementById('foodCarbs').value =
+        Math.round(food[4] * grams / 100);
+      document.getElementById('foodFat').value =
+        Math.round(food[5] * grams / 100);
+
+      status.textContent =
+        'Erkannt: ' + food[1] +
+        '. Portion vor dem Speichern bitte prüfen und anpassen.';
+    } catch (error) {
+      console.error(error);
+      status.textContent =
+        'Erkennung fehlgeschlagen. Prüfe die Internetverbindung und versuche es erneut.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+
 </body>
 </html>
