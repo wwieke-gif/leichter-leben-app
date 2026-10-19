@@ -1,188 +1,20 @@
-<!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111113">
-<meta name="description" content="LEICHTER LEBEN – Ernährung, Gewicht und Wohlbefinden im Blick behalten.">
-<title>LEICHTER LEBEN</title>
-<style>
-:root{--bg:#101012;--panel:#1d1d20;--panel2:#252529;--line:#39393e;--red:#ef3d4d;--muted:#aaaab2;--white:#f8f8fa;--green:#49c878}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#28191d 0,#101012 48%);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:100px}
-header{padding:22px 18px 12px;display:flex;justify-content:space-between;align-items:center;gap:12px}header small{color:#c0aeb1;display:block;font-size:13px}h1{font-size:25px;line-height:1.1;margin:4px 0;font-weight:850;letter-spacing:-.6px}.brand{display:flex;align-items:center;gap:10px}.logo{width:40px;height:40px;border-radius:14px;background:var(--red);display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:0 6px 22px #ef3d4d35}
-main{max-width:760px;margin:auto;padding:0 16px}.page{display:none}.page.active{display:block}.card{background:linear-gradient(145deg,#242427ee,#1a1a1dee);border:1px solid #3a3a3f;border-radius:24px;padding:18px;margin:12px 0;box-shadow:0 12px 28px #0002}.eyebrow{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.calorieTop{display:flex;align-items:center;justify-content:space-between;gap:15px}.big{font-size:42px;font-weight:900;letter-spacing:-1.5px}.big span{font-size:20px;color:var(--muted)}.ring{height:94px;width:94px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--red) var(--pct,0%),#444 0);position:relative;flex-shrink:0}.ring:before{content:"";position:absolute;inset:9px;background:#202023;border-radius:50%}.ring div{position:relative;text-align:center}.ring b{font-size:20px;color:var(--red);display:block}.ring small{font-size:9px;color:var(--muted);font-weight:800;letter-spacing:1px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.metric{background:#242427;border:1px solid var(--line);border-radius:18px;padding:13px 8px;text-align:center;min-width:0}.metric .emoji{font-size:22px}.metric strong{display:block;font-size:19px;margin:6px 0 2px}.metric small{font-size:11px;color:var(--muted);display:block}.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:19px;font-weight:850;margin:22px 2px 8px}.meal{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #37373b}.meal:last-child{border-bottom:0}.mealIcon{font-size:25px;width:35px;text-align:center}.mealInfo{flex:1;min-width:0}.mealInfo b{display:block}.mealInfo small{color:var(--muted)}button,.btn{border:0;border-radius:13px;background:var(--red);color:white;padding:12px 15px;font-size:15px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn.secondary,button.secondary{background:#303035;border:1px solid #45454b}.btn.small,button.small{padding:9px 12px;font-size:13px}.plus{width:43px;height:43px;padding:0;font-size:25px;background:#2c2c31;border:1px solid #45454b;color:var(--red)}input,select,textarea{width:100%;background:#121214;color:var(--white);border:1px solid #45454b;border-radius:12px;padding:13px;font:inherit;margin:6px 0 12px}label{display:block;color:#d8d8dc;font-size:13px;font-weight:700;margin-top:6px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.progress{height:8px;background:#39393d;border-radius:99px;overflow:hidden;margin-top:10px}.progress span{height:100%;display:block;background:var(--red);width:0}.muted{color:var(--muted)}.foodrow{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #38383c}.foodrow:last-child{border:0}.foodrow small{display:block;color:var(--muted);margin-top:3px}.empty{color:var(--muted);font-size:14px;padding:10px 0}.nav{position:fixed;z-index:5;bottom:env(safe-area-inset-bottom,0);left:12px;right:12px;max-width:740px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);background:#29292deF;border:1px solid #4a4a50;border-radius:28px;padding:7px 5px;box-shadow:0 10px 40px #0009;backdrop-filter:blur(18px)}.nav button{background:transparent;color:#d6d6db;border-radius:22px;padding:9px 2px;display:flex;flex-direction:column;gap:4px;font-size:11px}.nav button span{font-size:22px;line-height:1}.nav button.active{background:#171719;color:var(--red)}.nav button.active b{font-weight:900}.note{font-size:12px;color:var(--muted);line-height:1.5}.toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);background:#252529;border:1px solid #555;border-radius:12px;padding:12px 16px;z-index:20;display:none;max-width:90%;text-align:center}.recipe{padding:13px 0;border-bottom:1px solid #38383c}.recipe:last-child{border:0}.recipe h3{margin:0 0 5px;font-size:16px}.recipe p{margin:5px 0;color:var(--muted);font-size:13px;line-height:1.45}
-@media(min-width:600px){header{padding-top:28px}.big{font-size:50px}.card{padding:22px}.nav{bottom:15px}}
-</style>
-</head>
-<body>
-<header><div class="brand"><div class="logo">L</div><div><small>DEIN WEG ZU MEHR WOHLBEFINDEN</small><h1>LEICHTER LEBEN</h1></div></div><button class="secondary small" onclick="showPage('profil')">Profil</button></header>
-<main>
-<section id="start" class="page active">
-<div class="card"><div class="eyebrow" id="greeting">DEIN TAGESÜBERBLICK</div><div class="calorieTop"><div><div class="big"><span id="calConsumed">0</span><span> / </span><span id="calGoal">2000</span></div><div class="eyebrow">KALORIEN</div><p class="muted" style="margin-bottom:0"><b id="calLeft">2000</b> kcal übrig</p></div><div class="ring" id="calRing"><div><b id="ringPct">0%</b><small>ERREICHT</small></div></div></div><div class="progress"><span id="calProgress"></span></div></div>
-<div class="grid" id="metrics"></div>
-<div class="sectionTitle">Heutige Mahlzeiten <button class="small" onclick="showPage('essen')">+ Essen</button></div>
-<div class="card" id="mealSummary"></div>
-<div class="card"><div class="sectionTitle" style="margin-top:0">Dein Fortschritt</div><div class="formgrid"><div><label>Aktuelles Gewicht (kg)</label><input id="quickWeight" type="number" min="20" max="350" step=".1" placeholder="z. B. 90"></div><div><label>Zielgewicht (kg)</label><input id="quickGoal" type="number" min="20" max="350" step=".1" placeholder="z. B. 80"></div></div><button onclick="saveQuickWeight()">Gewicht speichern</button><p class="note">Gewichtsveränderungen können täglich schwanken. Achte auf den langfristigen Verlauf.</p></div>
-</section>
-<section id="training" class="page">
-<div class="sectionTitle">Bewegung & Training</div><div class="card"><div class="eyebrow">AKTIVITÄT EINTRAGEN</div><label>Aktivität</label><select id="activity"><option>Spazierengehen</option><option>Radfahren</option><option>Krafttraining</option><option>Schwimmen</option><option>Yoga</option><option>Sonstiges</option></select><label>Dauer (Minuten)</label><input id="minutes" type="number" min="1" max="1440" placeholder="z. B. 30"><label>Schritte (optional)</label><input id="steps" type="number" min="0" placeholder="z. B. 5000"><button onclick="addActivity()">Aktivität speichern</button></div><div class="card"><div class="sectionTitle" style="margin-top:0">Heutige Aktivitäten</div><div id="activityList" class="empty">Noch keine Aktivitäten eingetragen.</div></div></section>
-<section id="essen" class="page">
-<div class="sectionTitle">Ernährungstagebuch</div><div class="card"><div class="eyebrow">MAHLZEIT HINZUFÜGEN</div><label>Mahlzeit</label><select id="mealType"><option>Frühstück</option><option>Mittagessen</option><option>Abendessen</option><option>Snack</option></select><label>Gericht oder Lebensmittel</label><input id="foodName" placeholder="z. B. Haferflocken mit Banane"><div class="formgrid"><div><label>Kalorien (kcal)</label><input id="foodCalories" type="number" min="0" max="10000" placeholder="z. B. 350"></div><div><label>Portion (g, optional)</label><input id="foodGrams" type="number" min="0" placeholder="z. B. 250"></div><div><label>Eiweiß (g)</label><input id="foodProtein" type="number" min="0" placeholder="0"></div><div><label>Kohlenhydrate (g)</label><input id="foodCarbs" type="number" min="0" placeholder="0"></div><div><label>Fett (g)</label><input id="foodFat" type="number" min="0" placeholder="0"></div><div><label>Ballaststoffe (g)</label><input id="foodFiber" type="number" min="0" placeholder="0"></div></div><button onclick="addFood()">Mahlzeit speichern</button> <button class="secondary" onclick="clearFoodForm()">Leeren</button><hr style="border-color:#39393e;margin:20px 0"><div class="eyebrow">MIT FOTO ERFASSEN</div><p class="note">Fotografiere dein Essen oder wähle ein Bild aus. Das Foto erkennt Lebensmittel nicht automatisch; trage Zutaten und Nährwerte bitte ein oder korrigiere sie selbst.</p><input id="foodPhoto" type="file" accept="image/*" capture="environment"><img id="photoPreview" alt="Vorschau des Essens" style="display:none;width:100%;max-height:260px;object-fit:cover;border-radius:14px;margin:6px 0 12px"><button class="secondary" onclick="usePhoto()">Foto für Mahlzeit übernehmen</button></div>
-<div class="card"><div class="sectionTitle" style="margin-top:0">Heute eingetragen</div><div id="foodList" class="empty">Noch keine Mahlzeiten eingetragen.</div></div>
-<div class="card"><div class="sectionTitle" style="margin-top:0">Wasser trinken</div><div class="calorieTop"><div><div class="big"><span id="waterAmount">0</span><span> ml</span></div><small class="muted">Tagesziel: 1500 ml (anpassbar im Profil)</small></div><button onclick="addWater()">+ 250 ml</button></div><div class="progress"><span id="waterProgress"></span></div><button class="secondary small" style="margin-top:12px" onclick="resetWater()">Wasser zurücksetzen</button></div>
-</section>
-<section id="verlauf" class="page">
-<div class="sectionTitle">Dein Verlauf</div><div class="card"><div class="eyebrow">GEWICHTSVERLAUF</div><div id="weightHistory" class="empty">Noch keine Gewichtseinträge. Trage dein Gewicht auf der Startseite ein.</div></div><div class="card"><div class="eyebrow">TAGESÜBERSICHT</div><div id="historyStats"></div></div><div class="card"><div class="sectionTitle" style="margin-top:0">Beispiel-Rezepte</div><div class="recipe"><h3>Haferflocken mit Joghurt und Beeren</h3><p>Haferflocken, Naturjoghurt und Beeren in eine Schüssel geben. Nährwerte abhängig von Mengen und Produkten.</p></div><div class="recipe"><h3>Hähnchen mit Reis und Gemüse</h3><p>Hähnchen garen, Reis kochen und Gemüse dünsten. Mit Kräutern abschmecken.</p></div><div class="recipe"><h3>Linsensalat</h3><p>Gekochte Linsen mit Tomate, Gurke, Petersilie und Zitronendressing mischen.</p></div></div></section>
-<section id="profil" class="page">
-<div class="sectionTitle">Dein Profil</div><div class="card"><label>Dein Name (optional)</label><input id="profileName" placeholder="Wie sollen wir dich nennen?"><div class="formgrid"><div><label>Alter</label><input id="profileAge" type="number" min="18" max="120" placeholder="z. B. 40"></div><div><label>Größe (cm)</label><input id="profileHeight" type="number" min="100" max="250" placeholder="z. B. 175"></div><div><label>Aktuelles Gewicht (kg)</label><input id="profileWeight" type="number" min="20" max="350" step=".1" placeholder="z. B. 90"></div><div><label>Zielgewicht (kg)</label><input id="profileGoal" type="number" min="20" max="350" step=".1" placeholder="z. B. 80"></div></div><label>Kalorienziel pro Tag (kcal)</label><input id="profileCalories" type="number" min="500" max="6000" value="2000"><label>Wasserziel pro Tag (ml)</label><input id="profileWater" type="number" min="250" max="6000" value="1500"><button onclick="saveProfile()">Profil speichern</button><p class="note">Das Kalorienziel ist eine persönliche Einstellung und keine medizinische Empfehlung. Vermeide extreme Einschränkungen; bei Erkrankungen oder besonderen Ernährungsbedürfnissen hole dir fachlichen Rat.</p></div>
-<div class="card"><div class="sectionTitle" style="margin-top:0">Datensicherung</div><p class="note">Daten werden nur in diesem Browser auf diesem Gerät gespeichert. Lösche Browserdaten nicht, bevor du eine Sicherung erstellt hast.</p><button onclick="exportData()">Daten exportieren</button> <label class="btn secondary" for="importFile">Sicherung importieren</label><input id="importFile" type="file" accept="application/json" onchange="importData(event)"><button class="secondary" onclick="resetAll()">Alle Daten löschen</button></div></section>
-</main>
-<nav class="nav" aria-label="Hauptnavigation"><button class="active" data-page="start" onclick="showPage('start')"><span>⌂</span><b>Start</b></button><button data-page="training" onclick="showPage('training')"><span>♧</span><b>Training</b></button><button data-page="essen" onclick="showPage('essen')"><span>🍴</span><b>Essen</b></button><button data-page="verlauf" onclick="showPage('verlauf')"><span>◷</span><b>Verlauf</b></button><button data-page="profil" onclick="showPage('profil')"><span>☻</span><b>Profil</b></button></nav>
-<div id="toast" class="toast" role="status"></div>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#111521"><title>Leichter Leben</title><style>
+:root{color-scheme:dark;--bg:#111521;--card:#1c2332;--line:#343d50;--text:#f5f7fb;--muted:#aeb8ca;--accent:#ff5366}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 -apple-system,BlinkMacSystemFont,sans-serif}header{padding:24px 18px;background:#181e2b}header small{color:#ff8290;font-weight:800;letter-spacing:.12em}h1{margin:4px 0;font-size:29px}p,small{color:var(--muted)}main{max-width:760px;margin:auto;padding:14px 12px 80px}.nav{display:flex;gap:7px;overflow:auto;position:sticky;top:0;background:#111521f5;padding:10px 0;z-index:2}.nav button{white-space:nowrap;width:auto}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:14px}.card h2{margin:0 0 12px;font-size:20px}.stats,.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#262f41;padding:13px;border-radius:13px}.stat strong{display:block;font-size:22px}.stat span{font-size:13px;color:var(--muted)}label{display:block;margin:12px 0 5px;font-size:14px}input{width:100%;min-height:46px;padding:11px;border:1px solid #424d63;border-radius:11px;background:#101521;color:white;font:inherit}button{border:0;border-radius:12px;background:var(--accent);color:white;font:inherit;font-weight:750;padding:12px 14px;min-height:46px;cursor:pointer;width:100%;margin-top:9px}button.secondary{background:#343d50}.photo{display:none;width:100%;max-height:280px;object-fit:contain;margin-top:12px}.notice{background:#302a3a;padding:11px;border-radius:10px;font-size:14px;margin:12px 0}.hint{min-height:24px;font-size:14px;color:#c4d0e3}.item{background:#262f41;border-radius:12px;padding:12px;margin-top:8px}.item button{margin-top:8px}.bar{height:8px;background:#343d50;border-radius:10px;margin-top:8px;overflow:hidden}.bar div{height:100%;background:var(--accent);width:0}footer{text-align:center;color:var(--muted);font-size:12px;padding:12px}@media(min-width:600px){.stats{grid-template-columns:repeat(4,1fr)}}
+</style></head><body><header><small>DEIN PERSÖNLICHER BEGLEITER</small><h1>🌿 Leichter Leben</h1><p>Kleine Schritte. Gute Gewohnheiten. Dein Tempo.</p></header><main>
+<nav class="nav"><button class="secondary" onclick="go('start')">Übersicht</button><button class="secondary" onclick="go('essen')">Ernährung</button><button class="secondary" onclick="go('ziele')">Gewicht & Ziele</button><button class="secondary" onclick="go('bewegung')">Bewegung</button><button class="secondary" onclick="go('daten')">Datensicherung</button></nav>
+<section id="start" class="card"><h2>Dein Tag</h2><label for="day">Datum</label><input id="day" type="date"><div class="stats" style="margin-top:12px"><div class="stat"><span>Kalorien</span><strong id="sumCal">0 kcal</strong><span id="goalLabel">Ziel 1800 kcal</span><div class="bar"><div id="calBar"></div></div></div><div class="stat"><span>Eiweiß</span><strong id="sumProtein">0 g</strong></div><div class="stat"><span>Wasser</span><strong id="waterTotal">0 ml</strong></div><div class="stat"><span>Bewegung</span><strong id="moveTotal">0 min</strong></div></div><h2 style="margin-top:18px">💬 Motivation</h2><p id="motivation">Jeder kleine Schritt zählt. Du musst nicht perfekt sein.</p><button class="secondary" onclick="motivate()">Neue Motivation</button></section>
+<section id="essen" class="card"><h2>🍽️ Mahlzeit erfassen</h2><p>Fotografiere dein Essen oder wähle ein Bild aus. Die automatische Erkennung ist experimentell; kontrolliere bitte alle Werte.</p><label for="foodPhoto">Foto aufnehmen oder auswählen</label><input id="foodPhoto" type="file" accept="image/*" capture="environment"><img id="preview" class="photo" alt="Vorschau des Essens"><button id="estimateBtn" class="secondary" onclick="estimate()">✨ Essen auf dem Foto einschätzen</button><p id="photoStatus" class="hint" aria-live="polite">Wähle zuerst ein Foto. Beim ersten Start muss das Modell über das Internet geladen werden.</p><div class="notice">Ein Foto kann Portionsgröße, Zutaten, Öl und Soßen nicht sicher bestimmen. Nährwerte sind Schätzungen.</div>
+<div class="row"><div><label for="foodName">Lebensmittel / Gericht</label><input id="foodName" placeholder="z. B. Kartoffeln mit Gemüse"></div><div><label for="grams">Portion (g)</label><input id="grams" type="number" min="1" value="350"></div></div><div class="row"><div><label for="calories">Kalorien (kcal)</label><input id="calories" type="number" min="0" placeholder="450"></div><div><label for="protein">Eiweiß (g)</label><input id="protein" type="number" min="0" placeholder="20"></div></div><div class="row"><div><label for="carbs">Kohlenhydrate (g)</label><input id="carbs" type="number" min="0" placeholder="50"></div><div><label for="fat">Fett (g)</label><input id="fat" type="number" min="0" placeholder="15"></div></div><button onclick="addFood()">+ Mahlzeit speichern</button><button class="secondary" onclick="clearForm()">Felder leeren</button><h2 style="margin-top:20px">Heute eingetragen</h2><div id="foodList">Noch keine Mahlzeiten eingetragen.</div></section>
+<section id="ziele" class="card"><h2>⚖️ Gewicht & Ziele</h2><div class="row"><div><label for="weight">Gewicht (kg)</label><input id="weight" type="number" step=".1" placeholder="95.5"></div><div><label for="goalWeight">Zielgewicht (kg)</label><input id="goalWeight" type="number" step=".1" placeholder="85"></div></div><label for="goal">Kalorienziel pro Tag</label><input id="goal" type="number" min="500" value="1800"><button onclick="saveGoals()">Ziele speichern</button><p id="weightInfo"></p></section>
+<section id="bewegung" class="card"><h2>🚶 Bewegung & Wasser</h2><label for="activity">Aktivität</label><input id="activity" placeholder="z. B. Spaziergang"><label for="minutes">Dauer (Minuten)</label><input id="minutes" type="number" min="1" placeholder="20"><button onclick="addActivity()">Bewegung speichern</button><label for="waterAmount">Wasser hinzufügen (ml)</label><input id="waterAmount" type="number" value="250" min="1"><button onclick="addWater()">+ Wasser trinken</button><div id="activityList"></div></section>
+<section id="daten" class="card"><h2>💾 Datensicherung</h2><p>Einträge werden lokal in diesem Browser gespeichert. Exportiere regelmäßig eine Sicherung.</p><button class="secondary" onclick="exportData()">Sicherung exportieren</button><label for="importFile">Sicherung importieren (JSON)</label><input id="importFile" type="file" accept=".json,application/json"><button class="secondary" onclick="window.print()">Drucken / PDF</button><button style="background:#773744" onclick="resetData()">Alle Daten löschen</button></section><footer>Leichter Leben · Fotoerkennung und Nährwerte sind Schätzungen.</footer></main>
 <script>
-const KEY='leichter-leben-v1';
-const today=()=>new Date().toISOString().slice(0,10);
-const defaults={profile:{name:'',age:'',height:'',weight:'',goal:'',calories:2000,waterGoal:1500},foods:[],weights:[],activities:[],water:{date:today(),amount:0}};
-let state;try{state={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};state.profile={...defaults.profile,...(state.profile||{})}}catch(e){state=structuredClone(defaults)}
-function save(){localStorage.setItem(KEY,JSON.stringify(state));render()}
-function num(id){return Math.max(0,Number(document.getElementById(id).value)||0)}
-function val(id){return document.getElementById(id).value.trim()}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
-function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});render()}
-function todayFoods(){return state.foods.filter(f=>f.date===today())}
-function sum(key){return todayFoods().reduce((a,f)=>a+(Number(f[key])||0),0)}
-function addFood(){const name=val('foodName'),cal=num('foodCalories');if(!name){toast('Bitte zuerst ein Gericht eingeben.');return}if(!document.getElementById('foodCalories').value){toast('Bitte Kalorien eintragen oder anhand verlässlicher Angaben prüfen.');return}state.foods.push({id:Date.now(),date:today(),type:val('mealType'),name,cal,grams:num('foodGrams'),protein:num('foodProtein'),carbs:num('foodCarbs'),fat:num('foodFat'),fiber:num('foodFiber'),photo:window.pendingPhoto||''});window.pendingPhoto='';clearFoodForm();save();toast('Mahlzeit gespeichert.')}
-function clearFoodForm(){['foodName','foodCalories','foodGrams','foodProtein','foodCarbs','foodFat','foodFiber'].forEach(id=>document.getElementById(id).value='');document.getElementById('foodPhoto').value='';document.getElementById('photoPreview').style.display='none';window.pendingPhoto=''}
-function delFood(id){state.foods=state.foods.filter(f=>f.id!==id);save();toast('Eintrag gelöscht.')}
-function addWater(){if(state.water.date!==today())state.water={date:today(),amount:0};state.water.amount+=250;save()}
-function resetWater(){state.water={date:today(),amount:0};save()}
-function saveQuickWeight(){const w=num('quickWeight'),g=num('quickGoal');if(w<20){toast('Bitte ein gültiges Gewicht eingeben.');return}state.profile.weight=w;if(g>=20)state.profile.goal=g;state.weights.push({date:today(),weight:w});save();toast('Gewicht gespeichert.')}
-function saveProfile(){state.profile={...state.profile,name:val('profileName'),age:val('profileAge'),height:val('profileHeight'),weight:num('profileWeight')||state.profile.weight,goal:num('profileGoal')||state.profile.goal,calories:Math.max(500,Math.min(6000,num('profileCalories')||2000)),waterGoal:Math.max(250,Math.min(6000,num('profileWater')||1500))};save();toast('Profil gespeichert.')}
-function addActivity(){const minutes=num('minutes');if(!minutes){toast('Bitte Dauer eingeben.');return}state.activities.push({id:Date.now(),date:today(),activity:val('activity'),minutes,steps:num('steps')});document.getElementById('minutes').value='';document.getElementById('steps').value='';save();toast('Aktivität gespeichert.')}
-function delActivity(id){state.activities=state.activities.filter(a=>a.id!==id);save()}
-function usePhoto(){const f=document.getElementById('foodPhoto').files[0];if(!f){toast('Bitte zuerst ein Foto aufnehmen oder auswählen.');return}if(f.size>5*1024*1024){toast('Bitte ein Foto unter 5 MB auswählen.');return}const r=new FileReader();r.onload=()=>{window.pendingPhoto=r.result;const im=document.getElementById('photoPreview');im.src=r.result;im.style.display='block';toast('Foto bereit. Gericht und Nährwerte bitte ergänzen und speichern.')};r.readAsDataURL(f)}
-document.getElementById('foodPhoto').addEventListener('change',()=>{const f=document.getElementById('foodPhoto').files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=document.getElementById('photoPreview');im.src=r.result;im.style.display='block';window.pendingPhoto=r.result};r.readAsDataURL(f)});
-function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='leichter-leben-sicherung.json';a.click();URL.revokeObjectURL(url)}
-function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.profile||!Array.isArray(d.foods))throw Error();state={...defaults,...d,profile:{...defaults.profile,...d.profile}};save();toast('Sicherung importiert.')}catch(err){toast('Diese Sicherungsdatei ist ungültig.')}};r.readAsText(f)}
-function resetAll(){if(confirm('Wirklich alle App-Daten auf diesem Gerät löschen?')){localStorage.removeItem(KEY);state=structuredClone(defaults);save();toast('Alle Daten gelöscht.')}}
-function render(){const p=state.profile;const fs=todayFoods();const consumed=fs.reduce((a,f)=>a+f.cal,0),goal=p.calories||2000,left=Math.max(0,goal-consumed),pct=Math.min(100,Math.round(consumed/goal*100));document.getElementById('greeting').textContent=p.name?'HALLO, '+p.name.toUpperCase()+'!':'DEIN TAGESÜBERBLICK';document.getElementById('calConsumed').textContent=Math.round(consumed);document.getElementById('calGoal').textContent=goal;document.getElementById('calLeft').textContent=Math.round(left);document.getElementById('ringPct').textContent=pct+'%';document.getElementById('calRing').style.setProperty('--pct',pct+'%');document.getElementById('calProgress').style.width=pct+'%';
-const metrics=[['🍗','Eiweiß',sum('protein'),'g'],['🍚','Kohlenhydrate',sum('carbs'),'g'],['🥑','Fett',sum('fat'),'g'],['🥦','Ballaststoffe',sum('fiber'),'g'],['🍬','Zucker','—','g'],['💧','Wasser',state.water.date===today()?state.water.amount:0,'ml']];document.getElementById('metrics').innerHTML=metrics.map(m=>`<div class="metric"><div class="emoji">${m[0]}</div><strong>${m[2]}</strong><small>${m[1]} · ${m[3]}</small></div>`).join('');
-const types=[['Frühstück','☕'],['Mittagessen','🍝'],['Abendessen','🥗'],['Snack','🍎']];document.getElementById('mealSummary').innerHTML=types.map(([type,emoji])=>{const a=fs.filter(f=>f.type===type),c=a.reduce((s,f)=>s+f.cal,0);return `<div class="meal"><div class="mealIcon">${emoji}</div><div class="mealInfo"><b>${type}</b><small>${c} kcal · ${a.length} Einträge</small></div><button class="plus" onclick="document.getElementById('mealType').value='${type}';showPage('essen')">+</button></div>`}).join('');
-document.getElementById('foodList').innerHTML=fs.length?fs.map(f=>`<div class="foodrow"><div>${f.photo?'<span>📷 </span>':''}<b>${escapeHtml(f.name)}</b><small>${f.type}${f.grams?' · '+f.grams+' g':''} · ${f.cal} kcal</small></div><button class="secondary small" onclick="delFood(${f.id})">Löschen</button></div>`).join(''):'<div class="empty">Noch keine Mahlzeiten eingetragen.</div>';
-const wa=state.water.date===today()?state.water.amount:0;document.getElementById('waterAmount').textContent=wa;document.getElementById('waterProgress').style.width=Math.min(100,wa/(p.waterGoal||1500)*100)+'%';
-document.getElementById('activityList').innerHTML=state.activities.filter(a=>a.date===today()).length?state.activities.filter(a=>a.date===today()).map(a=>`<div class="foodrow"><div><b>${escapeHtml(a.activity)}</b><small>${a.minutes} Min. · ${a.steps} Schritte</small></div><button class="secondary small" onclick="delActivity(${a.id})">Löschen</button></div>`).join(''):'<div class="empty">Noch keine Aktivitäten eingetragen.</div>';
-document.getElementById('weightHistory').innerHTML=state.weights.length?[...state.weights].reverse().slice(0,30).map(w=>`<div class="foodrow"><div><b>${w.weight} kg</b><small>${w.date}</small></div></div>`).join(''):'Noch keine Gewichtseinträge. Trage dein Gewicht auf der Startseite ein.';
-document.getElementById('historyStats').innerHTML=`<p>Heute erfasste Mahlzeiten: <b>${fs.length}</b></p><p>Kalorien erfasst: <b>${consumed} kcal</b></p><p>Aktivitäten insgesamt: <b>${state.activities.length}</b></p>`;
-document.getElementById('profileName').value=p.name||'';document.getElementById('profileAge').value=p.age||'';document.getElementById('profileHeight').value=p.height||'';document.getElementById('profileWeight').value=p.weight||'';document.getElementById('profileGoal').value=p.goal||'';document.getElementById('profileCalories').value=goal;document.getElementById('profileWater').value=p.waterGoal||1500;document.getElementById('quickWeight').value=p.weight||'';document.getElementById('quickGoal').value=p.goal||''}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const KEY='leichterLebenNewV1',today=()=>new Date().toLocaleDateString('sv-SE'),blank=()=>({foods:[],activities:[],water:{},weight:'',goalWeight:'',goal:1800,day:today()});let s;try{s=JSON.parse(localStorage.getItem(KEY))||blank()}catch(e){s=blank()}if(!s.water||Array.isArray(s.water))s.water={};const $=id=>document.getElementById(id),n=id=>Math.max(0,Number($(id).value)||0),v=(id,x)=>$(id).value=x??'';
+function save(){localStorage.setItem(KEY,JSON.stringify(s));render()}function go(id){$(id).scrollIntoView({behavior:'smooth'})}function esc(t){return String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){let fs=s.foods.filter(x=>x.day===s.day),as=s.activities.filter(x=>x.day===s.day),cal=fs.reduce((a,x)=>a+x.cal,0),prot=fs.reduce((a,x)=>a+x.protein,0),goal=Number(s.goal)||1800;$('sumCal').textContent=Math.round(cal)+' kcal';$('sumProtein').textContent=Math.round(prot)+' g';$('goalLabel').textContent='Ziel '+goal+' kcal';$('calBar').style.width=Math.min(100,cal/goal*100)+'%';$('waterTotal').textContent=(s.water[s.day]||0)+' ml';$('moveTotal').textContent=as.reduce((a,x)=>a+x.min,0)+' min';$('foodList').innerHTML=fs.length?fs.map(x=>`<div class="item"><b>${esc(x.name)} · ${x.cal} kcal</b><br><small>${x.grams} g · Eiweiß ${x.protein} g · Kohlenhydrate ${x.carbs} g · Fett ${x.fat} g</small><button class="secondary" onclick="delFood('${x.id}')">Eintrag löschen</button></div>`).join(''):'Noch keine Mahlzeiten eingetragen.';$('activityList').innerHTML=as.map(x=>`<div class="item"><b>${esc(x.name)}</b> · ${x.min} min <button class="secondary" onclick="delAct('${x.id}')">Löschen</button></div>`).join('');$('weightInfo').textContent=s.weight?'Aktuell: '+s.weight+' kg'+(s.goalWeight?' · Ziel: '+s.goalWeight+' kg':''):'';v('weight',s.weight);v('goalWeight',s.goalWeight);v('goal',s.goal)}
+function clearForm(){['foodName','calories','protein','carbs','fat'].forEach(id=>v(id,''));v('grams',350)}function addFood(){if(!$('foodName').value.trim()||$('calories').value===''){alert('Bitte Gericht und Kalorien eintragen.');return}s.foods.push({id:String(Date.now()),day:s.day,name:$('foodName').value.trim(),grams:n('grams'),cal:n('calories'),protein:n('protein'),carbs:n('carbs'),fat:n('fat')});save();clearForm()}function delFood(id){s.foods=s.foods.filter(x=>x.id!==id);save()}function saveGoals(){s.weight=$('weight').value;s.goalWeight=$('goalWeight').value;s.goal=n('goal')||1800;save();alert('Ziele gespeichert.')}function addActivity(){if(!n('minutes'))return alert('Bitte Minuten eintragen.');s.activities.push({id:String(Date.now()),day:s.day,name:$('activity').value.trim()||'Bewegung',min:n('minutes')});v('activity','');v('minutes','');save()}function delAct(id){s.activities=s.activities.filter(x=>x.id!==id);save()}function addWater(){let a=n('waterAmount');if(a){s.water[s.day]=(s.water[s.day]||0)+a;save()}}function motivate(){let a=['Jeder kleine Schritt zählt.','Du musst nicht perfekt sein – bleib einfach dran.','Dein Tempo ist in Ordnung.','Heute ist eine neue Gelegenheit.'];$('motivation').textContent=a[Math.floor(Math.random()*a.length)]}
+function exportData(){let a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(s,null,2)],{type:'application/json'}));a.href=u;a.download='leichter-leben-sicherung.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}$('importFile').addEventListener('change',async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(!Array.isArray(d.foods)||!Array.isArray(d.activities))throw 0;s={...blank(),...d};save();alert('Sicherung importiert.')}catch(e){alert('Sicherung konnte nicht gelesen werden.')}e.target.value=''});function resetData(){if(confirm('Wirklich alle Daten dieser neuen App löschen?')){s=blank();save()}}
+$('day').value=s.day;$('day').addEventListener('change',e=>{s.day=e.target.value||today();save()});$('foodPhoto').addEventListener('change',()=>{let f=$('foodPhoto').files[0];if(!f)return;$('preview').src=URL.createObjectURL(f);$('preview').style.display='block';$('photoStatus').textContent='Foto ausgewählt. Tippe auf „Essen auf dem Foto einschätzen“. Beim ersten Mal kann das Laden dauern.'});
+let modelPromise;async function estimate(){let f=$('foodPhoto').files[0],status=$('photoStatus'),btn=$('estimateBtn');if(!f){status.textContent='Bitte zuerst ein Foto aufnehmen oder auswählen.';return}btn.disabled=true;btn.textContent='Erkennung läuft …';status.textContent='Modell wird geladen. Beim ersten Mal kann das mehrere Minuten dauern. Bitte nicht schließen.';try{if(!modelPromise)modelPromise=import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2').then(m=>m.pipeline('zero-shot-image-classification','Xenova/clip-vit-base-patch32'));let clf=await modelPromise,url=URL.createObjectURL(f),r;try{r=await clf(url,['a photo of pizza','a photo of a hamburger','a photo of french fries','a photo of grilled chicken','a photo of cooked rice','a photo of cooked pasta','a photo of salad','a photo of soup','a photo of steak','a photo of fried fish','a photo of pancakes','a photo of a sandwich','a photo of sushi','a photo of roasted potatoes','a photo of vegetable curry','a photo of cake','a photo of ice cream','a photo of an omelette'],{topk:1})}finally{URL.revokeObjectURL(url)}if(!r||!r.length)throw Error('Keine Ergebnisse');let label=r[0].label.replace(/^a photo of /,''),d={'pizza':['Pizza',266,11,33,10],'a hamburger':['Hamburger',295,17,30,12],'french fries':['Pommes frites',312,3,41,15],'grilled chicken':['Hähnchen',190,29,0,8],'cooked rice':['Gekochter Reis',130,3,28,0],'cooked pasta':['Nudeln',158,6,31,1],'salad':['Salat',35,2,6,1],'soup':['Suppe',60,3,8,2],'steak':['Steak',250,26,0,16],'fried fish':['Fisch',200,22,5,10],'pancakes':['Pfannkuchen',227,6,28,10],'a sandwich':['Sandwich',250,10,30,9],'sushi':['Sushi',150,6,30,2],'roasted potatoes':['Kartoffeln',150,3,27,4],'vegetable curry':['Gemüsecurry',120,3,15,5],'cake':['Kuchen',350,5,50,15],'ice cream':['Eis',210,4,24,11],'an omelette':['Omelett',154,11,1,11]}[label];if(!d)throw Error('Lebensmittel nicht zugeordnet');let g=350;v('foodName',d[0]);v('grams',g);v('calories',Math.round(d[1]*g/100));v('protein',Math.round(d[2]*g/100));v('carbs',Math.round(d[3]*g/100));v('fat',Math.round(d[4]*g/100));status.textContent='Vermutlich erkannt: '+d[0]+'. Schätzwerte für 350 g – bitte vor dem Speichern kontrollieren.'}catch(e){console.error(e);status.textContent='Erkennung fehlgeschlagen: Modell oder Bild konnte nicht geladen werden. Prüfe Internetverbindung oder trage Werte manuell ein.'}finally{btn.disabled=false;btn.textContent='✨ Essen auf dem Foto einschätzen'}}
 render();
-</script>
-/* LEICHTER LEBEN – experimentelle Fotoerkennung */
-(function () {
-  const photo = document.getElementById('foodPhoto');
-  if (!photo || document.getElementById('foodAIButton')) return;
-
-  const button = document.createElement('button');
-  button.id = 'foodAIButton';
-  button.textContent = '🍽️ Essen automatisch erkennen';
-  button.style.marginTop = '12px';
-  photo.insertAdjacentElement('afterend', button);
-
-  const status = document.createElement('p');
-  status.className = 'note';
-  button.insertAdjacentElement('afterend', status);
-
-  let classifierPromise;
-
-  const foods = [
-    ['pizza', 'Pizza', 266, 11, 33, 10],
-    ['hamburger', 'Hamburger', 295, 17, 30, 12],
-    ['french fries', 'Pommes frites', 312, 3, 41, 15],
-    ['grilled chicken', 'Hähnchen', 190, 29, 0, 8],
-    ['cooked rice', 'Gekochter Reis', 130, 3, 28, 0],
-    ['cooked pasta', 'Nudeln', 158, 6, 31, 1],
-    ['salad', 'Salat', 35, 2, 6, 1],
-    ['soup', 'Suppe', 60, 3, 8, 2],
-    ['steak', 'Steak', 250, 26, 0, 16],
-    ['fried fish', 'Fisch', 200, 22, 5, 10],
-    ['pancakes', 'Pfannkuchen', 227, 6, 28, 10],
-    ['sandwich', 'Sandwich', 250, 10, 30, 9],
-    ['sushi', 'Sushi', 150, 6, 30, 2],
-    ['roasted potatoes', 'Kartoffeln', 150, 3, 27, 4],
-    ['vegetable curry', 'Gemüsecurry', 120, 3, 15, 5],
-    ['cake', 'Kuchen', 350, 5, 50, 15],
-    ['ice cream', 'Eis', 210, 4, 24, 11],
-    ['omelette', 'Omelett', 154, 11, 1, 11]
-  ];
-
-  button.addEventListener('click', async function () {
-    const file = photo.files && photo.files[0];
-    if (!file) {
-      status.textContent = 'Bitte zuerst ein Foto aufnehmen.';
-      return;
-    }
-
-    button.disabled = true;
-    try {
-      status.textContent = 'Modell wird geladen. Beim ersten Mal kann das dauern …';
-
-      if (!classifierPromise) {
-        classifierPromise = import(
-          'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2'
-        ).then(m => m.pipeline(
-          'zero-shot-image-classification',
-          'Xenova/clip-vit-base-patch32'
-        ));
-      }
-
-      const classifier = await classifierPromise;
-      const imageURL = URL.createObjectURL(file);
-
-      let results;
-      try {
-        results = await classifier(
-          imageURL,
-          foods.map(f => 'a photo of ' + f[0]),
-          { topk: 1 }
-        );
-      } finally {
-        URL.revokeObjectURL(imageURL);
-      }
-
-      if (!results || !results.length) {
-        throw new Error('Keine Erkennung möglich.');
-      }
-
-      const label = results[0].label.replace(/^a photo of /, '');
-      const food = foods.find(f => f[0] === label);
-
-      if (!food) throw new Error('Lebensmittel nicht zugeordnet.');
-
-      const grams = 350;
-      document.getElementById('foodName').value = food[1];
-      document.getElementById('foodGrams').value = grams;
-      document.getElementById('foodCalories').value =
-        Math.round(food[2] * grams / 100);
-      document.getElementById('foodProtein').value =
-        Math.round(food[3] * grams / 100);
-      document.getElementById('foodCarbs').value =
-        Math.round(food[4] * grams / 100);
-      document.getElementById('foodFat').value =
-        Math.round(food[5] * grams / 100);
-
-      status.textContent =
-        'Erkannt: ' + food[1] +
-        '. Portion vor dem Speichern bitte prüfen und anpassen.';
-    } catch (error) {
-      console.error(error);
-      status.textContent =
-        'Erkennung fehlgeschlagen. Prüfe die Internetverbindung und versuche es erneut.';
-    } finally {
-      button.disabled = false;
-    }
-  });
-})();
-
-</body>
-</html>
+</script></body></html>
